@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Service Price Comparator</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <!-- Canvas for Three.js space animation -->
+    <div id="animation-container"></div>
+
+    <div id="app-container">
+        <!-- Multi-step form -->
+        <div id="form">
+            <h1>Price Comparator</h1>
+            <p class="tagline">Compare prices across different services</p>
+
+            <!-- Step 1: Category Selection -->
+            <div id="step-category" class="form-step active">
+                <h2 class="step-title">1. Select Category</h2>
+                <div class="category-cards">
+                    <div class="category-card" data-category="taxi">
+                        <div class="card-icon">
+                            <i class="fas fa-taxi"></i>
+                        </div>
+                        <h3>Taxi</h3>
+                        <p>Compare cab services</p>
+                    </div>
+                    <div class="category-card" data-category="restaurant">
+                        <div class="card-icon">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <h3>Restaurant</h3>
+                        <p>Compare food delivery</p>
+                    </div>
+                    <div class="category-card" data-category="quickcommerce">
+                        <div class="card-icon">
+                            <i class="fas fa-shopping-bag"></i>
+                        </div>
+                        <h3>Quick Commerce</h3>
+                        <p>Compare grocery delivery</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2: Taxi Options -->
+            <div id="step-taxi" class="form-step">
+                <h2 class="step-title">2. Enter Ride Details</h2>
+                <div class="input-group">
+                    <div class="location-section">
+                        <h3>From</h3>
+                        <div class="input-wrapper">
+                            <i class="fas fa-globe icon"></i>
+                            <select id="taxi-from-country" class="custom-select">
+                                <option value="" disabled selected>Select Country</option>
+                            </select>
+                        </div>
+                        <div class="input-wrapper">
+                            <i class="fas fa-map-marked-alt icon"></i>
+                            <select id="taxi-from-state" class="custom-select" disabled>
+                                <option value="" disabled selected>Select State</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="location-section">
+                        <h3>To</h3>
+                        <div class="input-wrapper">
+                            <i class="fas fa-globe icon"></i>
+                            <select id="taxi-to-country" class="custom-select">
+                                <option value="" disabled selected>Select Country</option>
+                            </select>
+                        </div>
+                        <div class="input-wrapper">
+                            <i class="fas fa-map-marked-alt icon"></i>
+                            <select id="taxi-to-state" class="custom-select" disabled>
+                                <option value="" disabled selected>Select State</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="buttons-group">
+                        <button class="back-btn" data-target="step-category">
+                            <span class="btn-icon"><i class="fas fa-arrow-left"></i></span>
+                            <span class="btn-text">Back</span>
+                        </button>
+                        <button id="compare-taxi-btn" class="compare-btn" disabled>
+                            <span class="btn-text">Compare Prices</span>
+                            <span class="btn-icon"><i class="fas fa-search"></i></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2: Restaurant Options -->
+            <div id="step-restaurant" class="form-step">
+                <h2 class="step-title">2. Select Restaurant & Location</h2>
+                <div class="input-group">
+                    <div class="input-wrapper">
+                        <i class="fas fa-globe icon"></i>
+                        <select id="restaurant-country" class="custom-select">
+                            <option value="" disabled selected>Select Country</option>
+                        </select>
+                    </div>
+                    <div class="input-wrapper">
+                        <i class="fas fa-map-marked-alt icon"></i>
+                        <select id="restaurant-state" class="custom-select" disabled>
+                            <option value="" disabled selected>Select State</option>
+                        </select>
+                    </div>
+                    <div class="input-wrapper">
+                        <i class="fas fa-city icon"></i>
+                        <select id="restaurant-city" class="custom-select" disabled>
+                            <option value="" disabled selected>Select City</option>
+                        </select>
+                    </div>
+                    <div class="input-wrapper">
+                        <i class="fas fa-utensils icon"></i>
+                        <select id="restaurant-name" class="custom-select" disabled>
+                            <option value="" disabled selected>Select Restaurant</option>
+                        </select>
+                    </div>
+
+                    <div class="buttons-group">
+                        <button class="back-btn" data-target="step-category">
+                            <span class="btn-icon"><i class="fas fa-arrow-left"></i></span>
+                            <span class="btn-text">Back</span>
+                        </button>
+                        <button id="compare-restaurant-btn" class="compare-btn" disabled>
+                            <span class="btn-text">Compare Prices</span>
+                            <span class="btn-icon"><i class="fas fa-search"></i></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2: Quick Commerce Options -->
+            <div id="step-quickcommerce" class="form-step">
+                <h2 class="step-title">2. Enter Delivery Details</h2>
+                <div class="input-group">
+                    <div class="input-wrapper">
+                        <i class="fas fa-globe icon"></i>
+                        <select id="quickcommerce-country" class="custom-select">
+                            <option value="" disabled selected>Select Country</option>
+                        </select>
+                    </div>
+                    <div class="input-wrapper">
+                        <i class="fas fa-map-marked-alt icon"></i>
+                        <select id="quickcommerce-state" class="custom-select" disabled>
+                            <option value="" disabled selected>Select State</option>
+                        </select>
+                    </div>
+                    <div class="input-wrapper">
+                        <i class="fas fa-city icon"></i>
+                        <select id="quickcommerce-city" class="custom-select" disabled>
+                            <option value="" disabled selected>Select City</option>
+                        </select>
+                    </div>
+                    <div class="input-wrapper">
+                        <i class="fas fa-map-marker-alt icon"></i>
+                        <select id="quickcommerce-address" class="custom-select" disabled>
+                            <option value="" disabled selected>Select Address</option>
+                        </select>
+                    </div>
+                    <div class="input-wrapper grocery-item-wrapper hidden">
+                        <i class="fas fa-shopping-basket icon"></i>
+                        <select id="quickcommerce-grocery-item" class="custom-select" disabled>
+                            <option value="" disabled selected>Select Grocery Item</option>
+                        </select>
+                    </div>
+
+                    <div class="input-wrapper custom-item-wrapper">
+                        <i class="fas fa-plus-circle icon"></i>
+                        <div class="custom-inputs">
+                            <input type="text" id="quickcommerce-custom-item" placeholder="Or add your own item"
+                                class="custom-input">
+                            <input type="number" id="quickcommerce-custom-price" placeholder="Base price" min="1"
+                                class="custom-input">
+                        </div>
+                    </div>
+
+                    <div class="buttons-group">
+                        <button class="back-btn" data-target="step-category">
+                            <span class="btn-icon"><i class="fas fa-arrow-left"></i></span>
+                            <span class="btn-text">Back</span>
+                        </button>
+                        <button id="compare-quickcommerce-btn" class="compare-btn" disabled>
+                            <span class="btn-text">Compare Prices</span>
+                            <span class="btn-icon"><i class="fas fa-search"></i></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Loading State -->
+            <div id="loader" class="hidden">
+                <div class="spinner"></div>
+                <p>Finding the best deals...</p>
+            </div>
+
+            <!-- Results -->
+            <div id="results" class="hidden">
+                <div class="results-header">
+                    <button id="back-to-form" class="back-btn">
+                        <span class="btn-icon"><i class="fas fa-arrow-left"></i></span>
+                        <span class="btn-text">New Search</span>
+                    </button>
+                    <h3>Comparison Results</h3>
+                </div>
+                <div id="results-container"></div>
+            </div>
+
+            <!-- Error Message -->
+            <div id="error-message" class="hidden">
+                <i class="fas fa-exclamation-circle"></i>
+                <p>No results found. Please try a different search.</p>
+                <button id="error-back" class="back-btn">
+                    <span class="btn-icon"><i class="fas fa-arrow-left"></i></span>
+                    <span class="btn-text">Try Again</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Multi-Service Price Comparator &copy; 2025 - Compare prices from Uber, Ola, Zomato, Swiggy, Zepto, Blinkit
+            and more</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="/js/animations.js"></script>
+    <script src="/js/script.js"></script>
+</body>
+
+</html>
