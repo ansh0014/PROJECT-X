@@ -246,6 +246,18 @@ document.addEventListener('DOMContentLoaded', function() {
         selectElement.disabled = false;
     }
 
+    // Set default country to "India" for all category forms  
+    function setDefaultCountry(selectElement) {
+        const options = selectElement.options;
+        for (let i = 0; i < options.length; i++) {
+            if (options[i].value.toLowerCase() === "india") {
+                selectElement.selectedIndex = i;
+                selectElement.dispatchEvent(new Event('change')); // Trigger change event
+                break;
+            }
+        }
+    }
+
     // API Data Loading Functions
 
     // Load countries for all category forms
@@ -261,12 +273,16 @@ document.addEventListener('DOMContentLoaded', function() {
                     case 'taxi':
                         populateSelect(taxiFromCountrySelect, countries);
                         populateSelect(taxiToCountrySelect, countries);
+                        setDefaultCountry(taxiFromCountrySelect);
+                        setDefaultCountry(taxiToCountrySelect);
                         break;
                     case 'restaurant':
                         populateSelect(restaurantCountrySelect, countries);
+                        setDefaultCountry(restaurantCountrySelect);
                         break;
                     case 'quickcommerce':
                         populateSelect(quickCommerceCountrySelect, countries);
+                        setDefaultCountry(quickCommerceCountrySelect);
                         break;
                 }
             }
