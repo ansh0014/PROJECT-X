@@ -437,14 +437,15 @@ button:disabled:hover {
     right: 20px;
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     color: #000;
-    font-size: 0.7rem;
-    font-weight: 700;
+    font-size: 0.8rem;
+    font-weight: 650;
     padding: 5px 12px;
     border-radius: 20px;
     letter-spacing: 0.5px;
     box-shadow: 0 3px 10px rgba(0, 212, 255, 0.3);
     animation: pulse-update 2s infinite;
     z-index: 10;
+    margin-top: 25px;
 }
 
 @keyframes pulse-update {
@@ -589,6 +590,7 @@ button:disabled:hover {
 
 /* Best Deal Indicator */
 .best-deal {
+    margin-top: 25px;
     border-left-color: var(--secondary-color);
     position: relative;
     box-shadow: 0 5px 20px rgba(0, 212, 255, 0.2);
@@ -602,7 +604,7 @@ button:disabled:hover {
 .best-deal::after {
     content: 'Best Deal';
     position: absolute;
-    top: -10px;
+    top: 10px;
     right: 15px;
     background: linear-gradient(135deg, var(--secondary-color), #2cc4ff);
     color: #000;
