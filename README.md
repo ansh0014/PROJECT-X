@@ -25,8 +25,8 @@ StealXDeal is an intelligent price comparison tool that helps users find the **b
 - Install **Go (Golang)** (Version 1.19+)
 - Clone the repository:
   ```sh
-  git clone https://github.com/yourusername/StealXDeal.git
-  cd StealXDeal
+  git clone https://github.com/ansh0014/PROJECT-X
+  cd PROJECT-X
   ```
 
 ### **Run the Server**
@@ -40,7 +40,7 @@ go run main.go
 Connect to:
 
 ```
-ws://localhost:5000/ws
+ws://localhost:5000
 ```
 
 ## 🚀 Future Enhancements
