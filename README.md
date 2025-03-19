@@ -54,10 +54,11 @@ http://localhost:5000/
 
 - **This project was developed as a team submission for Innovate 2025,** under the theme: **Open Innovation**.
 
+<!--
 ## 📜 License
-
+    
 This project is licensed under the **MIT License**.
-
+-->
 ---
 
 📢 **Find the best deal every time.** Say goodbye to manual price hunting with **StealXDeal!** 🎯
