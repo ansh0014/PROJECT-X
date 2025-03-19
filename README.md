@@ -22,6 +22,7 @@ StealXDeal is an intelligent price comparison tool that helps users find the **b
 
 ### **Prerequisites**
 
+- Make sure Git is installed in the system, if not install from [this link](https://git-scm.com/downloads).
 - Install **Go (Golang)** (Version 1.19+)
 - Clone the repository:
   ```sh
@@ -40,7 +41,7 @@ go run main.go
 Connect to:
 
 ```
-ws://localhost:5000
+http://localhost:5000/
 ```
 
 ## 🚀 Future Enhancements
