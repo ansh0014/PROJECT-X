@@ -2,7 +2,7 @@
 
 ## 📌 Overview
 
-StealXDeal is an intelligent price comparison tool that helps users find the **best deals across multiple platforms** in real-time. Automating price fetching and comparison eliminates manual effort and ensures maximum savings.
+StealXDeal `aka PROJECT-X` is an intelligent price comparison tool that helps users find the **best deals across multiple platforms** in real-time. Automating price fetching and comparison eliminates manual effort and ensures maximum savings.
 
 ## 🎯 Key Features
 
